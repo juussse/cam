@@ -35,7 +35,10 @@
             const video = document.getElementById('video');
             const capturedImage = document.getElementById('capturedImage');
 
-            navigator.mediaDevices.getUserMedia({ video: true })
+            // Configurar opciones para acceder a la cámara trasera
+            const constraints = { video: { facingMode: 'environment' } };
+
+            navigator.mediaDevices.getUserMedia(constraints)
                 .then((stream) => {
                     video.srcObject = stream;
                 })
@@ -52,7 +55,7 @@
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
                 // Ajustar la calidad de la imagen
-                const quality = 0.05; // Ajusta este valor según tus necesidades
+                const quality = 0.5; // Ajusta este valor según tus necesidades
                 capturedImage.src = canvas.toDataURL('image/jpeg', quality);
             }, 100); // Cambia la frecuencia de actualización según tus necesidades
         });
