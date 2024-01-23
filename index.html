@@ -51,8 +51,9 @@
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-                // Asignar la imagen capturada al elemento de imagen
-                capturedImage.src = canvas.toDataURL('image/png');
+                // Ajustar la calidad de la imagen
+                const quality = 0.05; // Ajusta este valor según tus necesidades
+                capturedImage.src = canvas.toDataURL('image/jpeg', quality);
             }, 100); // Cambia la frecuencia de actualización según tus necesidades
         });
     </script>
